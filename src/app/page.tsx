@@ -9,41 +9,41 @@ function VideoModal({ video, exerciseName, onClose }: { video: VideoReference; e
   };
 
   return (
-    <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-4" onClick={onClose}>
-      <div className="bg-[#111] border border-zinc-800 max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
-        <div className="p-4 border-b border-zinc-800 flex items-center justify-between">
-          <div>
-            <h3 className="text-white font-bold tracking-wide">{exerciseName}</h3>
-            <span className="text-xs px-2 py-0.5 bg-blue-600/20 text-blue-400">
+    <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-3 sm:p-4" onClick={onClose}>
+      <div className="bg-[#111] border border-zinc-800 max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="p-3 sm:p-4 border-b border-zinc-800 flex items-center justify-between gap-2">
+          <div className="min-w-0">
+            <h3 className="text-white font-bold tracking-wide text-sm sm:text-base truncate">{exerciseName}</h3>
+            <span className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 bg-blue-600/20 text-blue-400">
               MuscleWiki
             </span>
           </div>
-          <button onClick={onClose} className="text-zinc-500 hover:text-white text-2xl leading-none">&times;</button>
+          <button onClick={onClose} className="text-zinc-500 hover:text-white text-2xl leading-none flex-shrink-0">&times;</button>
         </div>
         
-        <div className="p-4 space-y-4">
-          <div className="bg-zinc-900/50 p-3 border-l-2 border-[#ff4d00]">
-            <p className="text-xs text-zinc-500 mb-1">SEARCH PATH:</p>
-            <p className="text-sm text-zinc-300 font-mono">{video.searchPath}</p>
+        <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
+          <div className="bg-zinc-900/50 p-2.5 sm:p-3 border-l-2 border-[#ff4d00]">
+            <p className="text-[10px] sm:text-xs text-zinc-500 mb-1">SEARCH PATH:</p>
+            <p className="text-xs sm:text-sm text-zinc-300 font-mono break-all">{video.searchPath}</p>
           </div>
           
-          <div className="bg-zinc-900/50 p-3 border-l-2 border-yellow-500">
-            <p className="text-xs text-zinc-500 mb-1">WHY THIS SOURCE?</p>
-            <p className="text-sm text-zinc-300 italic">&quot;{video.reason}&quot;</p>
+          <div className="bg-zinc-900/50 p-2.5 sm:p-3 border-l-2 border-yellow-500">
+            <p className="text-[10px] sm:text-xs text-zinc-500 mb-1">WHY THIS SOURCE?</p>
+            <p className="text-xs sm:text-sm text-zinc-300 italic">&quot;{video.reason}&quot;</p>
           </div>
 
           <button
             onClick={handleOpenExternal}
-            className="w-full py-4 bg-[#ff4d00] hover:bg-[#ff6a2a] text-white font-bold tracking-wider transition-colors flex items-center justify-center gap-2"
+            className="w-full py-3 sm:py-4 bg-[#ff4d00] hover:bg-[#ff6a2a] text-white font-bold tracking-wider transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             WATCH FORM VIDEO
           </button>
           
-          <p className="text-xs text-zinc-600 text-center">Opens in new tab. Study the form before lifting.</p>
+          <p className="text-[10px] sm:text-xs text-zinc-600 text-center">Opens in new tab. Study the form before lifting.</p>
         </div>
       </div>
     </div>
@@ -66,15 +66,15 @@ function RestTimer({ duration, onComplete }: { duration: number; onComplete: () 
   const secs = timeLeft % 60;
 
   return (
-    <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-      <div className="text-center">
-        <p className="text-[#ff4d00] text-2xl font-bold mb-4 tracking-wider">REST TIME</p>
-        <p className="text-[120px] font-bold text-white leading-none" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+    <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4">
+      <div className="text-center w-full max-w-sm">
+        <p className="text-[#ff4d00] text-xl sm:text-2xl font-bold mb-3 sm:mb-4 tracking-wider">REST TIME</p>
+        <p className="text-[80px] sm:text-[120px] font-bold text-white leading-none" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
           {mins}:{secs.toString().padStart(2, "0")}
         </p>
         <button
           onClick={onComplete}
-          className="mt-8 px-8 py-3 bg-[#ff4d00] text-white font-bold tracking-wider hover:bg-[#ff6a2a] transition-colors"
+          className="mt-6 sm:mt-8 px-6 sm:px-8 py-2.5 sm:py-3 bg-[#ff4d00] text-white font-bold tracking-wider hover:bg-[#ff6a2a] transition-colors text-sm sm:text-base"
         >
           SKIP REST
         </button>
@@ -120,20 +120,20 @@ function ExerciseCard({
 
   return (
     <div
-      className={`relative border-l-4 ${allDone ? "border-l-green-500 bg-green-900/10" : "border-l-[#ff4d00] bg-[#111]"} p-4 mb-3 transition-all`}
+      className={`relative border-l-4 ${allDone ? "border-l-green-500 bg-green-900/10" : "border-l-[#ff4d00] bg-[#111]"} p-3 sm:p-4 mb-2 sm:mb-3 transition-all`}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex-1">
-          <div className="flex items-center gap-2 mb-2 flex-wrap">
-            <span className={`inline-block px-2 py-0.5 text-xs font-medium border ${typeClass}`}>
+      <div className="flex flex-col gap-2">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap min-w-0">
+            <span className={`inline-block px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-medium border ${typeClass} whitespace-nowrap`}>
               {exercise.type}
             </span>
             {exercise.video && (
               <button
                 onClick={onWatchVideo}
-                className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium border transition-colors bg-blue-600/20 text-blue-400 border-blue-500/30 hover:bg-blue-600/40"
+                className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-medium border transition-colors bg-blue-600/20 text-blue-400 border-blue-500/30 hover:bg-blue-600/40"
               >
-                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                 </svg>
                 FORM
@@ -143,43 +143,46 @@ function ExerciseCard({
               <button
                 key={idx}
                 onClick={() => onWatchVideos(idx)}
-                className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium border transition-colors bg-fuchsia-600/20 text-fuchsia-400 border-fuchsia-500/30 hover:bg-fuchsia-600/40"
+                className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-medium border transition-colors bg-fuchsia-600/20 text-fuchsia-400 border-fuchsia-500/30 hover:bg-fuchsia-600/40"
               >
-                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                 </svg>
                 {String.fromCharCode(65 + idx)}
               </button>
             ))}
           </div>
-          <h3 className={`text-lg font-bold tracking-wide ${allDone ? "text-green-400 line-through" : "text-white"}`}>
-            {exercise.order}. {exercise.name}
-          </h3>
-          <div className="flex flex-wrap gap-3 mt-2 text-sm text-zinc-400">
-            <span className="flex items-center gap-1">
-              <span className="text-[#ff4d00]">⚙</span> {exercise.equipment}
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="text-[#ff4d00]">↻</span> {exercise.sets} sets × {exercise.reps}
-            </span>
-            {exercise.rest !== "0" && (
-              <span className="flex items-center gap-1">
-                <span className="text-[#ff4d00]">⏱</span> {exercise.rest} rest
-              </span>
-            )}
-          </div>
-          <p className="mt-3 text-sm text-zinc-500 italic border-l-2 border-zinc-700 pl-3">
-            &quot;{exercise.logic}&quot;
-          </p>
         </div>
+        
+        <h3 className={`text-base sm:text-lg font-bold tracking-wide ${allDone ? "text-green-400 line-through" : "text-white"}`}>
+          {exercise.order}. {exercise.name}
+        </h3>
+        
+        <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-zinc-400">
+          <span className="flex items-center gap-1">
+            <span className="text-[#ff4d00]">⚙</span> {exercise.equipment}
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="text-[#ff4d00]">↻</span> {exercise.sets}×{exercise.reps}
+          </span>
+          {exercise.rest !== "0" && (
+            <span className="flex items-center gap-1">
+              <span className="text-[#ff4d00]">⏱</span> {exercise.rest}
+            </span>
+          )}
+        </div>
+        
+        <p className="text-xs sm:text-sm text-zinc-500 italic border-l-2 border-zinc-700 pl-2 sm:pl-3">
+          &quot;{exercise.logic}&quot;
+        </p>
       </div>
 
-      <div className="flex gap-2 mt-4">
+      <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4">
         {completedSets.map((done, i) => (
           <button
             key={i}
             onClick={() => onSetComplete(i)}
-            className={`w-12 h-12 flex items-center justify-center font-bold text-lg transition-all ${
+            className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center font-bold text-sm sm:text-lg transition-all ${
               done
                 ? "bg-green-600 text-white"
                 : "bg-zinc-800 text-zinc-400 hover:bg-[#ff4d00] hover:text-white"
@@ -201,39 +204,6 @@ function formatTime(seconds: number): string {
     return `${hrs}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   }
   return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
-
-function WorkoutTimer({ isRunning, onToggle, elapsedTime }: { isRunning: boolean; onToggle: () => void; elapsedTime: number }) {
-  return (
-    <div className="flex items-center gap-3">
-      <button
-        onClick={onToggle}
-        className={`w-10 h-10 flex items-center justify-center transition-all ${
-          isRunning 
-            ? "bg-red-600 hover:bg-red-700" 
-            : "bg-green-600 hover:bg-green-700"
-        }`}
-      >
-        {isRunning ? (
-          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-          </svg>
-        ) : (
-          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-          </svg>
-        )}
-      </button>
-      <div className="text-center">
-        <p className="text-2xl font-bold text-white tracking-wider" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
-          {formatTime(elapsedTime)}
-        </p>
-        <p className="text-[10px] text-zinc-500 uppercase tracking-wider">
-          {isRunning ? "Workout Active" : "Paused"}
-        </p>
-      </div>
-    </div>
-  );
 }
 
 export default function Home() {
@@ -342,7 +312,7 @@ export default function Home() {
   const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#0a0a0a] max-w-[100vw] overflow-x-hidden">
       {videoModal && (videoModal.exercise.video || (videoModal.exercise.videos && videoModal.videoIndex !== undefined)) && (
         <VideoModal
           video={videoModal.exercise.video || videoModal.exercise.videos![videoModal.videoIndex!]}
@@ -356,28 +326,51 @@ export default function Home() {
       )}
 
         <header className="sticky top-0 z-40 bg-[#0a0a0a]/95 backdrop-blur border-b border-zinc-800">
-          <div className="max-w-2xl mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <div>
+          <div className="w-full max-w-2xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0 flex-shrink">
                 <h1
-                  className="text-4xl text-[#ff4d00] tracking-wider"
+                  className="text-2xl sm:text-4xl text-[#ff4d00] tracking-wider truncate"
                   style={{ fontFamily: "Bebas Neue, sans-serif" }}
                 >
                   IRON PROTOCOL
                 </h1>
-                <p className="text-zinc-500 text-sm mt-1">6-Day PPL Split — No Excuses.</p>
+                <p className="text-zinc-500 text-xs sm:text-sm mt-0.5 sm:mt-1 truncate">6-Day PPL Split</p>
               </div>
               
               {workoutStarted ? (
-                <WorkoutTimer
-                  isRunning={workoutTimerRunning}
-                  onToggle={() => setWorkoutTimerRunning(!workoutTimerRunning)}
-                  elapsedTime={elapsedTime}
-                />
+                <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                  <button
+                    onClick={() => setWorkoutTimerRunning(!workoutTimerRunning)}
+                    className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all ${
+                      workoutTimerRunning 
+                        ? "bg-red-600 hover:bg-red-700" 
+                        : "bg-green-600 hover:bg-green-700"
+                    }`}
+                  >
+                    {workoutTimerRunning ? (
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                      </svg>
+                    )}
+                  </button>
+                  <div className="text-right">
+                    <p className="text-lg sm:text-2xl font-bold text-white tracking-wider" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
+                      {formatTime(elapsedTime)}
+                    </p>
+                    <p className="text-[8px] sm:text-[10px] text-zinc-500 uppercase tracking-wider">
+                      {workoutTimerRunning ? "Active" : "Paused"}
+                    </p>
+                  </div>
+                </div>
               ) : (
-                <div className="text-right">
-                  <p className="text-xs text-zinc-500 uppercase tracking-wider">Est. Time</p>
-                  <p className="text-xl font-bold text-zinc-400" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
+                <div className="text-right flex-shrink-0">
+                  <p className="text-[10px] sm:text-xs text-zinc-500 uppercase tracking-wider">Est. Time</p>
+                  <p className="text-base sm:text-xl font-bold text-zinc-400" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
                     ~{formatTime(estimatedTime)}
                   </p>
                 </div>
@@ -385,8 +378,8 @@ export default function Home() {
             </div>
           </div>
 
-        <div className="max-w-2xl mx-auto px-4 pb-3">
-          <div className="flex gap-1">
+        <div className="w-full max-w-2xl mx-auto px-3 sm:px-4 pb-2 sm:pb-3">
+          <div className="flex gap-0.5 sm:gap-1">
             {days.map((day, i) => {
               const workout = workoutPlan.find((w) => w.days.includes(day));
               const isActive = activeWorkout?.days.includes(day);
@@ -394,14 +387,14 @@ export default function Home() {
                 <button
                   key={day}
                   onClick={() => workout && setActiveWorkout(workout)}
-                  className={`flex-1 py-2 text-xs font-bold tracking-wider transition-all ${
+                  className={`flex-1 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold tracking-wider transition-all ${
                     isActive
                       ? "bg-[#ff4d00] text-white"
                       : "bg-zinc-900 text-zinc-500 hover:bg-zinc-800 hover:text-zinc-300"
                   }`}
                 >
                   {dayNames[i]}
-                  <span className="block text-[10px] opacity-70">{workout?.name}</span>
+                  <span className="hidden sm:block text-[10px] opacity-70">{workout?.name}</span>
                 </button>
               );
             })}
@@ -409,14 +402,14 @@ export default function Home() {
         </div>
 
         {activeWorkout && (
-          <div className="max-w-2xl mx-auto px-4 pb-3">
-            <div className="flex items-center justify-between text-sm mb-1">
+          <div className="w-full max-w-2xl mx-auto px-3 sm:px-4 pb-2 sm:pb-3">
+            <div className="flex items-center justify-between text-xs sm:text-sm mb-1">
               <span className="text-zinc-400">
                 {doneSets}/{totalSets} sets
               </span>
               <span className="text-[#ff4d00] font-bold">{Math.round(progress)}%</span>
             </div>
-            <div className="h-2 bg-zinc-800 overflow-hidden">
+            <div className="h-1.5 sm:h-2 bg-zinc-800 overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-[#ff4d00] to-[#ff6a2a] transition-all duration-300"
                 style={{ width: `${progress}%` }}
@@ -426,25 +419,25 @@ export default function Home() {
         )}
       </header>
 
-      <main className="max-w-2xl mx-auto px-4 py-6">
+      <main className="w-full max-w-2xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
         {activeWorkout && (
           <>
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <h2
-                className="text-5xl text-white tracking-wider"
+                className="text-3xl sm:text-5xl text-white tracking-wider"
                 style={{ fontFamily: "Bebas Neue, sans-serif" }}
               >
                 {activeWorkout.name}
               </h2>
-              <p className="text-zinc-500 mt-1">
+              <p className="text-zinc-500 mt-1 text-sm sm:text-base">
                 {activeWorkout.days.join(" & ")} — <span className="text-[#ff4d00]">{activeWorkout.goal}</span>
               </p>
-              <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-zinc-700">
-                <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <div className="mt-2 inline-flex items-center gap-2 px-2 sm:px-3 py-1 bg-zinc-900 border border-zinc-700">
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                   <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                 </svg>
-                <span className="text-xs text-yellow-500 font-medium tracking-wide">VISUAL GOAL: {activeWorkout.visualGoal}</span>
+                <span className="text-[10px] sm:text-xs text-yellow-500 font-medium tracking-wide">VISUAL GOAL: {activeWorkout.visualGoal}</span>
               </div>
             </div>
 
@@ -462,31 +455,31 @@ export default function Home() {
               </div>
 
             {progress === 100 && (
-                <div className="mt-8 p-6 bg-green-900/20 border border-green-600/30 text-center">
-                  <p className="text-3xl text-green-400 font-bold tracking-wider" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
+                <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-green-900/20 border border-green-600/30 text-center">
+                  <p className="text-2xl sm:text-3xl text-green-400 font-bold tracking-wider" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
                     WORKOUT COMPLETE!
                   </p>
                   {completionTime !== null && (
-                    <div className="mt-4 space-y-2">
-                      <p className="text-5xl font-bold text-white" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
+                    <div className="mt-3 sm:mt-4 space-y-1.5 sm:space-y-2">
+                      <p className="text-4xl sm:text-5xl font-bold text-white" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
                         {formatTime(completionTime)}
                       </p>
-                      <p className="text-sm text-zinc-500">Total Workout Time</p>
+                      <p className="text-xs sm:text-sm text-zinc-500">Total Workout Time</p>
                       {completionTime < estimatedTime && (
-                        <p className="text-xs text-green-400">
+                        <p className="text-[10px] sm:text-xs text-green-400">
                           {formatTime(estimatedTime - completionTime)} faster than estimated!
                         </p>
                       )}
                     </div>
                   )}
-                  <p className="text-zinc-400 mt-4">Time to recover. See you next session.</p>
+                  <p className="text-zinc-400 mt-3 sm:mt-4 text-sm sm:text-base">Time to recover. See you next session.</p>
                 </div>
               )}
           </>
         )}
       </main>
 
-      <footer className="max-w-2xl mx-auto px-4 py-8 text-center text-zinc-600 text-sm border-t border-zinc-800 mt-8">
+      <footer className="w-full max-w-2xl mx-auto px-3 sm:px-4 py-6 sm:py-8 text-center text-zinc-600 text-xs sm:text-sm border-t border-zinc-800 mt-6 sm:mt-8">
         <p>&quot;Consistency beats intensity. Show up.&quot;</p>
       </footer>
     </div>
